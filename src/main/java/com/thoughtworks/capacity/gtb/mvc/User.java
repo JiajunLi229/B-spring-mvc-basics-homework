@@ -20,13 +20,11 @@ public class User {
     private String email;
 
     @NotNull(message = "username must not be null")
-    @Size(min = 3,max = 10)
+    @Size(min = 3, max = 10)
     @Pattern(regexp = "^[0-9a-zA-Z_]{1,}$")
     private String username;
 
     @NotNull(message = "password must not be null")
-    @Size(min = 5,max = 12)
+    @Size(min = 5, max = 12)
     private String password;
-
-
 }

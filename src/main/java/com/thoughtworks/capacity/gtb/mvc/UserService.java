@@ -1,9 +1,6 @@
 package com.thoughtworks.capacity.gtb.mvc;
-
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 @Service
@@ -12,7 +9,7 @@ public class UserService {
     private User user;
 
     public UserService() {
-        userMap.put(1, new User(1,"123@qq.com", "user", "password"));
+        userMap.put(1, new User(1, "123@qq.com", "user", "password"));
     }
 
     public void register(User user) {
@@ -31,6 +28,6 @@ public class UserService {
                 return user;
             }
         }
-         throw new UserLoginException("用户名或者密码错误");
+        throw new UserLoginException("用户名或者密码错误");
     }
 }
