@@ -14,15 +14,27 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResult> handle(MethodArgumentNotValidException ex) {
+        long status = HttpStatus.BAD_REQUEST.value();
         String message = Objects.requireNonNull(ex.getBindingResult().getFieldError()).getDefaultMessage();
-        ErrorResult errorResult = new ErrorResult(message);
+        ErrorResult errorResult = new ErrorResult(status,message);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
     }
 
     @ExceptionHandler({ExistedUserException.class})
     public ResponseEntity<ErrorResult> handle(ExistedUserException ex) {
-        ErrorResult errorResult = new ErrorResult(ex.getMessage());
+        long status = HttpStatus.NOT_FOUND.value();
+        ErrorResult errorResult = new ErrorResult(status,ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResult);
 
     }
+
+    @ExceptionHandler({UserLoginException.class})
+    public ResponseEntity<ErrorResult> handle(UserLoginException ex) {
+        long status = HttpStatus.NOT_FOUND.value();
+        ErrorResult errorResult = new ErrorResult(status, ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResult);
+
+    }
+
+
 }

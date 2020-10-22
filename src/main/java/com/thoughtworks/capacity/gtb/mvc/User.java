@@ -13,6 +13,8 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class User {
 
+    private int id;
+
     @NotNull(message = "email must not be null")
     @Pattern(regexp = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
     private String email;

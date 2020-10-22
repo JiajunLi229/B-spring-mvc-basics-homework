@@ -22,4 +22,10 @@ public class UserController {
         userService.register(user);
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public User loginUser(@RequestParam("username") String username, @RequestParam("password") String password) {
+        return userService.loginUser(username, password);
+    }
+
 }
