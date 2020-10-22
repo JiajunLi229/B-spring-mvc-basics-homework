@@ -14,6 +14,9 @@ public class UserService {
     }
 
     public void register (User user) {
+        if(userMap.containsValue(user)){
+            throw new ExistedUserException("用户已存在");
+        }
         Number userId = userMap.size() + 1;
         userMap.put(userId, user);
     }
